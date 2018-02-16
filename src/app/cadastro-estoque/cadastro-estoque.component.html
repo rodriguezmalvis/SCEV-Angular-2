@@ -1,0 +1,19 @@
+<app-banner titulo="Cadastrar Estoque"></app-banner>
+  <input type="hidden" class="form-control" th:field="*{idEstoque}"/>
+  <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nome">Nome do Estoque</label>
+        <input [(ngModel)]="estoque.nome" type="text" class="form-control"/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tipo">Tipo de Estoque</label>
+        <select class="form-control" [(ngModel)]="estoque.tipo">
+          <option *ngFor="let tipo of tipos.tiposEstoque" value="{{tipo}}">{{tipo}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea [(ngModel)]="estoque.descricao" class="form-control"></textarea>
+    </div>
+  <button class="btn btn-success" (click)=cadastra()>Cadastrar Estoque</button>

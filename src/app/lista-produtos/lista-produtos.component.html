@@ -1,0 +1,23 @@
+<app-banner titulo="Listagem de Produtos"></app-banner>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Cod Produto</th>
+      <th scope="col">Foto</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Autor</th>
+      <th scope="col">Sinopse</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of listaProdutos.produtos">
+      <th scope="row">{{produto.idProduto}}</th>
+      <td><img alt="{{produto.titulo}}" src="{{produto.urlFoto}}" width="60px" height="60px"/></td>
+      <td>{{produto.titulo}}</td>
+      <td>{{produto.autor}}</td>
+      <td>{{produto.sinopse}}</td>
+      <td><a href="">Ver Ficha</a></td>
+    </tr>
+  </tbody>
+</table>

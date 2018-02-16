@@ -1,0 +1,32 @@
+    <app-banner titulo="Cadastrar Movimentacão"></app-banner>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nome">Quantidade</label>
+        <input type="number" min="1" class="form-control"/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tipo">Tipo de Movimentacao</label>
+        <select class="form-control">
+          <option *ngFor="let tipo of tipos.tipoMovimentacoes" value={{tipo}}>{{tipo}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="tipo">Estoque</label>
+        <select class="form-control">
+          <option></option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="nome">Produto</label>
+        <select class="form-control">
+          <option></option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea class="form-control"></textarea>
+    </div>
+  <button type="submit" class="btn btn-success">Cadastrar Movimentacao</button>

@@ -1,0 +1,23 @@
+<app-banner titulo="Útimas de Movimentações"></app-banner>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Cod Movimentação</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Estoque</th>
+      <th scope="col">Produto</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movimentacao of listaMovimentacoes.movimentacoes">
+      <th scope="row">{{movimentacao.idMovimentacao}}</th>
+      <td>{{movimentacao.descricao}}</td>
+      <td>{{movimentacao.estoque.nome}}</td>
+      <td>{{movimentacao.produto.titulo}}</td>
+      <td>{{movimentacao.quantidade}}</td>
+      <td>{{movimentacao.tipo}}</td>
+    </tr>
+  </tbody>
+</table>
