@@ -13,7 +13,7 @@ export class CadastroEstoqueComponent implements OnInit {
   estoque: Estoque = new Estoque();
   tipos: Object[]=[];
 
-  constructor(private http: Http, formService: FormService) { 
+  constructor(private formService: FormService) { 
 
     formService.getTiposEstoque()
             .subscribe(
@@ -32,13 +32,10 @@ export class CadastroEstoqueComponent implements OnInit {
   cadastra(){
     console.log(this.estoque);
 
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        this.http.post('http://localhost:8080/cadastraEstoque', JSON.stringify(this.estoque), { headers: headers })
+        this.formService.cadastraEstoque(this.estoque)
             .subscribe(() => {
                 this.estoque = new Estoque();
-                console.log('Foto salva com sucesso');
+                console.log('Estoque salvo com sucesso');
             }, erro =>  console.log(erro));
   }
 

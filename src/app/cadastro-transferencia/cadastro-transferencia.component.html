@@ -1,0 +1,40 @@
+  <app-banner titulo="Cadastrar Transferência"></app-banner>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="nome">Quantidade</label>
+      <input [(ngModel)]=transferencia.quantidade type="number" min="1" class="form-control"/>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="tipo">Tipo de Movimentacao</label>
+      <select class="form-control" [(ngModel)]=transferencia.tipo disabled>
+        <option value="{{transferencia.tipo}}">{{transferencia.tipo}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="tipo">Estoque Origem</label>
+      <select (change)="carregaSelects()" [(ngModel)]=transferencia.origem.idEstoque class="form-control">
+        <option *ngFor="let estoque of listaEstoques.estoques" 
+        value="{{estoque.idEstoque}}">{{estoque.nome}} ( {{estoque.tipo}} )</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="nome">Produto</label>
+      <select [(ngModel)]=transferencia.produto.idProduto class="form-control">
+        <option *ngFor="let produtoEstoque of listaProdutos.produtos" 
+        value="{{produtoEstoque.id}}">{{produtoEstoque.produto.titulo}} ( {{produtoEstoque.quantidade}} Und. )</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="tipo">Estoque Destino</label>
+      <select [(ngModel)]=transferencia.destino.idEstoque class="form-control">
+        <option *ngFor="let estoque of destinos.estoques" value="{{estoque.idEstoque}}">{{estoque.nome}} ({{estoque.tipo}})</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="descricao">Descrição</label>
+    <textarea [(ngModel)]=transferencia.descricao class="form-control"></textarea>
+  </div>
+<button (click)=cadastra() class="btn btn-success">Cadastrar Movimentacao</button>

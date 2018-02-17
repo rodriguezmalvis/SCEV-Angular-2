@@ -15,6 +15,8 @@ import { ListaProdutosComponent } from './lista-produtos/lista-produtos.componen
 import { ListaMovimentacoesComponent } from './lista-movimentacoes/lista-movimentacoes.component';
 import { CadastroMovimentacaoComponent } from './cadastro-movimentacao/cadastro-movimentacao.component';
 import { FormService } from './shared/services/formService';
+import { CadastroTransferenciaComponent } from './cadastro-transferencia/cadastro-transferencia.component';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { FormService } from './shared/services/formService';
     CadastroProdutoComponent,
     ListaProdutosComponent,
     ListaMovimentacoesComponent,
-    CadastroMovimentacaoComponent
+    CadastroMovimentacaoComponent,
+    CadastroTransferenciaComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import { FormService } from './shared/services/formService';
     HttpModule,
     FormsModule
   ],
-  providers: [FormService],
+  providers: [FormService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

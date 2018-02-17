@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 @Component({
   selector: 'app-lista-estoques',
@@ -10,7 +11,7 @@ export class ListaEstoquesComponent implements OnInit {
 
   listaEstoques: Object[] = [];
 
-  constructor(http: Http) {
+  constructor(http: Http, private cookieService: CookieService) {
 
     http.get('http://localhost:8080/estoque/lista.json')
             .map(res => res.json())
@@ -25,6 +26,10 @@ export class ListaEstoquesComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  salvaIdEstoque(idEstoque){
+    //this.cookieService.put("idEstoque",idEstoque);
   }
 
 }

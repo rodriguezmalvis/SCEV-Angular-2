@@ -17,8 +17,8 @@
       <td>{{estoque.nome}}</td>
       <td>{{estoque.descricao}}</td>
       <td>{{estoque.quantidadeProdutos}}</td>
-      <td><a href="">Ver Produtos</a></td>
-      <td><a href="">Ver Movimentações</a></td>
+      <td><a [routerLink]="['/listaProdutos']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Produtos</a></td>
+      <td><a href="" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Movimentações</a></td>
       <td>
         <div class="row">
       <div class="col text-right">

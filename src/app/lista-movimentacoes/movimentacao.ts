@@ -7,7 +7,7 @@ export class Movimentacao{
     tipo: String
     descricao: String
     quantidade: Number
-    estoque: Estoque
-    produto: Produto
+    estoque: Estoque = new Estoque();
+    produto: Produto = new Produto();
 
 }

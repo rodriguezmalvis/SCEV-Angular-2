@@ -13,7 +13,7 @@ export class CadastroProdutoComponent implements OnInit {
   produto: Produto = new Produto();
   tipos: Object[] = [];
 
-  constructor(private http: Http, formService: FormService) {
+  constructor(private formService: FormService) {
 
     formService.getTiposProduto()
             .subscribe(
@@ -31,11 +31,8 @@ export class CadastroProdutoComponent implements OnInit {
 
   cadastra(){
       console.log(this.produto);
-  
-          var headers = new Headers();
-          headers.append('Content-Type', 'application/json');
-  
-          this.http.post('http://localhost:8080/cadastraProduto', JSON.stringify(this.produto), { headers: headers })
+
+          this.formService.cadastraProduto(this.produto)
               .subscribe(() => {
                   this.produto = new Produto();
                   console.log('Foto salva com sucesso');

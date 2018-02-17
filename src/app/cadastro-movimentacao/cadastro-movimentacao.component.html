@@ -2,11 +2,11 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="nome">Quantidade</label>
-        <input type="number" min="1" class="form-control"/>
+        <input [(ngModel)]=movimentacao.quantidade type="number" min="1" class="form-control"/>
       </div>
       <div class="form-group col-md-6">
         <label for="tipo">Tipo de Movimentacao</label>
-        <select class="form-control">
+        <select [(ngModel)]=movimentacao.tipo class="form-control">
           <option *ngFor="let tipo of tipos.tipoMovimentacoes" value={{tipo}}>{{tipo}}</option>
         </select>
       </div>
@@ -14,19 +14,19 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="tipo">Estoque</label>
-        <select class="form-control">
-          <option></option>
+        <select [(ngModel)]=movimentacao.estoque.idEstoque class="form-control">
+          <option *ngFor="let estoque of listaEstoques.estoques" value="{{estoque.idEstoque}}">{{estoque.nome}} ({{estoque.tipo}})</option>
         </select>
       </div>
       <div class="form-group col-md-6">
         <label for="nome">Produto</label>
-        <select class="form-control">
-          <option></option>
+        <select [(ngModel)]=movimentacao.produto.idProduto class="form-control">
+          <option *ngFor="let produto of listaProdutos.produtos" value="{{produto.idProduto}}">{{produto.titulo}} ({{produto.tipo}})</option>
         </select>
       </div>
     </div>
     <div class="form-group">
       <label for="descricao">Descrição</label>
-      <textarea class="form-control"></textarea>
+      <textarea [(ngModel)]=movimentacao.descricao class="form-control"></textarea>
     </div>
-  <button type="submit" class="btn btn-success">Cadastrar Movimentacao</button>
+  <button class="btn btn-success" (click)=cadastra()>Cadastrar Movimentacao</button>

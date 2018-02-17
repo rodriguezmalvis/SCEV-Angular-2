@@ -6,6 +6,7 @@ import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.co
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 import { ListaMovimentacoesComponent } from './lista-movimentacoes/lista-movimentacoes.component';
 import { CadastroMovimentacaoComponent } from './cadastro-movimentacao/cadastro-movimentacao.component';
+import { CadastroTransferenciaComponent } from './cadastro-transferencia/cadastro-transferencia.component';
 
 const routes: Routes = [
   { path: 'listaEstoques', component: ListaEstoquesComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'cadastraProduto', component: CadastroProdutoComponent },
   { path: 'listaProdutos', component: ListaProdutosComponent },
   { path: 'listaMovimentacoes', component: ListaMovimentacoesComponent },
-  { path: 'cadastraMovimentacao', component: CadastroMovimentacaoComponent }
+  { path: 'cadastraMovimentacao', component: CadastroMovimentacaoComponent },
+  { path: 'cadastraTransferencia', component: CadastroTransferenciaComponent }
 ];
 
 @NgModule({
