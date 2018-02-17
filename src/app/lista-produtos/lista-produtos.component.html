@@ -8,6 +8,7 @@
       <th scope="col">Autor</th>
       <th scope="col">Sinopse</th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,7 @@
       <td>{{produto.autor}}</td>
       <td>{{produto.sinopse}}</td>
       <td><a href="">Ver Ficha</a></td>
+      <td><a (click)="salvaIdProduto(produto.idProduto)" [routerLink]="['/editaProduto']" class="btn btn-sm btn-primary">Editar</a></td>
     </tr>
   </tbody>
 </table>

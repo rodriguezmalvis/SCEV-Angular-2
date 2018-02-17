@@ -17,15 +17,12 @@
       <td>{{estoque.nome}}</td>
       <td>{{estoque.descricao}}</td>
       <td>{{estoque.quantidadeProdutos}}</td>
-      <td><a [routerLink]="['/listaProdutos']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Produtos</a></td>
-      <td><a href="" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Movimentações</a></td>
+      <td><a [routerLink]="['/listaProdutosEstoque']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Produtos</a></td>
+      <td><a [routerLink]="['/listaMovimentacoesEstoque']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Movimentações</a></td>
       <td>
         <div class="row">
       <div class="col text-right">
-        <form action="" method="post">
-          <input class="form-control" type="hidden" name="idEstoque" value="estoque.idEstoque"/>
-        <button type="submit" class="btn btn-sm btn-primary">Editar</button>
-        </form>
+        <a [routerLink]="['/editaEstoque']" (click)="salvaIdEstoque(estoque.idEstoque)" class="btn btn-sm btn-primary">Editar</a>
       </div>
     </div>
       </td>

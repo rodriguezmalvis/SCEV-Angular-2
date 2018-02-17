@@ -1,0 +1,19 @@
+<app-banner titulo="Listagem de Produtos"></app-banner>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Cod. Produto</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">tipo</th>
+      <th scope="col">Quantidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produtoEstoque of listaProdutos.produtos">
+      <th scope="row">{{produtoEstoque.produto.idProduto}}</th>
+      <td>{{produtoEstoque.produto.titulo}}</td>
+      <td>{{produtoEstoque.produto.tipo}}</td>
+      <td>{{produtoEstoque.quantidade}}</td>
+    </tr>
+  </tbody>
+</table>

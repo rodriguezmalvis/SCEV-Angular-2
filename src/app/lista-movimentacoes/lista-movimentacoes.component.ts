@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Movimentacao } from './movimentacao';
 import { Http } from '@angular/http';
+import { FormService } from '../shared/services/formService';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 @Component({
   selector: 'app-lista-movimentacoes',
@@ -11,10 +13,10 @@ export class ListaMovimentacoesComponent implements OnInit {
 
   listaMovimentacoes: Movimentacao[] = [];
 
-  constructor(http: Http) {
+  constructor(http: Http, formService: FormService, cookieService: CookieService) {
 
-    http.get('http://localhost:8080/movimentacao/lista.json')
-            .map(res => res.json())
+    if(cookieService.get("idEstoque") === undefined){
+      formService.getMovimentacoes()
             .subscribe(
               movimentacoes =>
                 (
@@ -22,6 +24,19 @@ export class ListaMovimentacoesComponent implements OnInit {
                 ),
                 erro => console.log(erro)
             );
+    }else{
+      formService.getMovimentacoesEstoque(cookieService.get("idEstoque"))
+            .subscribe(
+              movimentacoes =>
+                (
+                  this.listaMovimentacoes = movimentacoes
+                ),
+                erro => console.log(erro)
+            );
+      cookieService.remove("idEstoque");
+    }
+
+    
 
    }
 

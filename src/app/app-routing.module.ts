@@ -7,6 +7,7 @@ import { ListaProdutosComponent } from './lista-produtos/lista-produtos.componen
 import { ListaMovimentacoesComponent } from './lista-movimentacoes/lista-movimentacoes.component';
 import { CadastroMovimentacaoComponent } from './cadastro-movimentacao/cadastro-movimentacao.component';
 import { CadastroTransferenciaComponent } from './cadastro-transferencia/cadastro-transferencia.component';
+import { ListaProdutosEstoqueComponent } from './lista-produtos-estoque/lista-produtos-estoque.component';
 
 const routes: Routes = [
   { path: 'listaEstoques', component: ListaEstoquesComponent },
@@ -15,7 +16,11 @@ const routes: Routes = [
   { path: 'listaProdutos', component: ListaProdutosComponent },
   { path: 'listaMovimentacoes', component: ListaMovimentacoesComponent },
   { path: 'cadastraMovimentacao', component: CadastroMovimentacaoComponent },
-  { path: 'cadastraTransferencia', component: CadastroTransferenciaComponent }
+  { path: 'cadastraTransferencia', component: CadastroTransferenciaComponent },
+  { path: 'listaMovimentacoesEstoque', component: ListaMovimentacoesComponent },
+  { path: 'listaProdutosEstoque', component: ListaProdutosEstoqueComponent },
+  { path: 'editaEstoque', component: CadastroEstoqueComponent },
+  { path: 'editaProduto', component: CadastroProdutoComponent }
 ];
 
 @NgModule({

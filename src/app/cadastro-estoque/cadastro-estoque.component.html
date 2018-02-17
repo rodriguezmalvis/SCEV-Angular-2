@@ -1,5 +1,5 @@
 <app-banner titulo="Cadastrar Estoque"></app-banner>
-  <input type="hidden" class="form-control" th:field="*{idEstoque}"/>
+  <input type="hidden" class="form-control" [(ngModel)]="estoque.idEstoque"/>
   <div class="form-row">
       <div class="form-group col-md-6">
         <label for="nome">Nome do Estoque</label>
