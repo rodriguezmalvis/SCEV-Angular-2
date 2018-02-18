@@ -3,6 +3,8 @@ import { FormService } from '../shared/services/formService';
 import { Movimentacao } from '../lista-movimentacoes/movimentacao';
 import { Estoque } from '../cadastro-estoque/estoque';
 import { Produto } from '../cadastro-produto/produto';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
 
 @Component({
   selector: 'app-cadastro-movimentacao',
@@ -15,8 +17,11 @@ export class CadastroMovimentacaoComponent implements OnInit {
   listaEstoques: Estoque[] = [];
   listaProdutos: Produto[] = [];
   movimentacao: Movimentacao = new Movimentacao();
+  formulario: FormGroup;
 
-  constructor(private formService: FormService) { 
+  constructor(private formService: FormService, builder: FormGroupBuilder) { 
+
+    this.formulario = builder.getFormGroupMovimentacao();
 
     formService.getTiposMovimentacoes()
             .subscribe(

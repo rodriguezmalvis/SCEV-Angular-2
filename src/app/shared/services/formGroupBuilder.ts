@@ -13,7 +13,20 @@ export class FormGroupBuilder{
     }
 
     getFormGroupMovimentacao(){
-        
+        return this.builder.group({
+            movimentacao: this.builder.group({
+                idMovimentacao: [''],
+                tipo: ['',Validators.required],
+                descricao: ['',Validators.required],
+                quantidade: ['',Validators.required],
+                estoque: this.builder.group({
+                    idEstoque: ['',Validators.required]
+                }),
+                produto: this.builder.group({
+                    idProduto: ['',Validators.required]
+                }),
+            })
+        });
     }
 
     getFormGroupProduto(){
@@ -29,7 +42,7 @@ export class FormGroupBuilder{
                 preco: ['',Validators.required],
                 contato: ['',Validators.required],
                 sinopse: ['',Validators.required],
-                urlFoto: ['',Validators.required]
+                urlFoto: ['']
             })
         });
     }

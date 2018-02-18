@@ -1,32 +1,45 @@
     <app-banner titulo="Cadastrar Movimentacão"></app-banner>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="nome">Quantidade</label>
-        <input [(ngModel)]=movimentacao.quantidade type="number" min="1" class="form-control"/>
+    <form [formGroup]="formulario">
+
+      <div formGroupName="movimentacao">
+
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="nome">Quantidade</label>
+                <input formControlName="quantidade" [(ngModel)]=movimentacao.quantidade type="number" min="1" class="form-control"
+                [ngClass]="{'is-invalid' : formulario.controls.movimentacao.controls.quantidade.invalid}"/>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="tipo">Tipo de Movimentacao</label>
+                <select formControlName="tipo" [(ngModel)]=movimentacao.tipo class="form-control"
+                [ngClass]="{'is-invalid' : formulario.controls.movimentacao.controls.tipo.invalid}">
+                  <option *ngFor="let tipo of tipos.tipoMovimentacoes" value={{tipo}}>{{tipo}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6" formGroupName="estoque">
+                <label for="tipo">Estoque</label>
+                <select formControlName="idEstoque" [(ngModel)]=movimentacao.estoque.idEstoque class="form-control"
+                [ngClass]="{'is-invalid' : formulario.controls.movimentacao.controls.estoque.controls.idEstoque.invalid}">
+                  <option *ngFor="let estoque of listaEstoques.estoques" value="{{estoque.idEstoque}}">{{estoque.nome}} ({{estoque.tipo}})</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6" formGroupName="produto">
+                <label for="nome">Produto</label>
+                <select formControlName="idProduto" [(ngModel)]=movimentacao.produto.idProduto class="form-control"
+                [ngClass]="{'is-invalid' : formulario.controls.movimentacao.controls.produto.controls.idProduto.invalid}">
+                  <option *ngFor="let produto of listaProdutos.produtos" value="{{produto.idProduto}}">{{produto.titulo}} ({{produto.tipo}})</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="descricao">Descrição</label>
+              <textarea formControlName="descricao" [(ngModel)]=movimentacao.descricao class="form-control"
+              [ngClass]="{'is-invalid' : formulario.controls.movimentacao.controls.descricao.invalid}"></textarea>
+            </div>
+          <button [disabled]="formulario.invalid" class="btn btn-success" (click)=cadastra()>Cadastrar Movimentacao</button>
+
       </div>
-      <div class="form-group col-md-6">
-        <label for="tipo">Tipo de Movimentacao</label>
-        <select [(ngModel)]=movimentacao.tipo class="form-control">
-          <option *ngFor="let tipo of tipos.tipoMovimentacoes" value={{tipo}}>{{tipo}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="tipo">Estoque</label>
-        <select [(ngModel)]=movimentacao.estoque.idEstoque class="form-control">
-          <option *ngFor="let estoque of listaEstoques.estoques" value="{{estoque.idEstoque}}">{{estoque.nome}} ({{estoque.tipo}})</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="nome">Produto</label>
-        <select [(ngModel)]=movimentacao.produto.idProduto class="form-control">
-          <option *ngFor="let produto of listaProdutos.produtos" value="{{produto.idProduto}}">{{produto.titulo}} ({{produto.tipo}})</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="descricao">Descrição</label>
-      <textarea [(ngModel)]=movimentacao.descricao class="form-control"></textarea>
-    </div>
-  <button class="btn btn-success" (click)=cadastra()>Cadastrar Movimentacao</button>
+
+    </form>
