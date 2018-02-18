@@ -5,6 +5,7 @@ import { Estoque } from '../cadastro-estoque/estoque';
 import { Produto } from '../cadastro-produto/produto';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
+import { MaskService } from '../shared/services/maskService';
 
 @Component({
   selector: 'app-cadastro-movimentacao',
@@ -18,10 +19,14 @@ export class CadastroMovimentacaoComponent implements OnInit {
   listaProdutos: Produto[] = [];
   movimentacao: Movimentacao = new Movimentacao();
   formulario: FormGroup;
+  precoMask;
 
-  constructor(private formService: FormService, private builder: FormGroupBuilder) { 
+  constructor(private formService: FormService, 
+              private builder: FormGroupBuilder,
+              private maskService: MaskService) { 
 
     this.formulario = builder.getFormGroupMovimentacao();
+    this.precoMask = maskService.getMaskPreco();
 
     formService.getTiposMovimentacoes()
             .subscribe(

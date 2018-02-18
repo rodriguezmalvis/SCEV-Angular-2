@@ -19,7 +19,8 @@ import { CadastroTransferenciaComponent } from './cadastro-transferencia/cadastr
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { ListaProdutosEstoqueComponent } from './lista-produtos-estoque/lista-produtos-estoque.component';
 import { FormGroupBuilder } from './shared/services/formGroupBuilder';
-
+import { TextMaskModule } from 'angular2-text-mask';
+import { MaskService } from './shared/services/maskService';
 
 @NgModule({
   declarations: [
@@ -40,9 +41,10 @@ import { FormGroupBuilder } from './shared/services/formGroupBuilder';
     AppRoutingModule,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TextMaskModule
   ],
-  providers: [FormService, CookieService, FormGroupBuilder],
+  providers: [FormService, CookieService, FormGroupBuilder, MaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

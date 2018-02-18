@@ -5,6 +5,7 @@ import { FormService } from '../shared/services/formService';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { FormGroup } from '@angular/forms';
 import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
+import { MaskService } from '../shared/services/maskService';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -16,10 +17,15 @@ export class CadastroProdutoComponent implements OnInit, AfterViewChecked {
   produto: Produto = new Produto();
   tipos: Object[] = [];
   formulario: FormGroup;
+  precoMask
 
-  constructor(private formService: FormService, cookieService: CookieService,private builder: FormGroupBuilder) {
+  constructor(private formService: FormService, 
+              cookieService: CookieService,
+              private builder: FormGroupBuilder,
+              private maskSevice: MaskService) {
 
     this.formulario = this.builder.getFormGroupProduto();
+    this.precoMask = maskSevice.getMaskPreco;
 
     if(cookieService.get("idProduto") !== undefined){
         formService.getProduto(cookieService.get("idProduto"))

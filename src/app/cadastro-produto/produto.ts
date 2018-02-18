@@ -6,7 +6,7 @@ export class Produto{
     autor: String
     paginas: Number
     formato: String
-    isbn: Number
+    isbn: String
     preco: Number
     contato: String
     sinopse: String
