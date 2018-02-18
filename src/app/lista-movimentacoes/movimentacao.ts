@@ -9,5 +9,6 @@ export class Movimentacao{
     quantidade: Number
     estoque: Estoque = new Estoque();
     produto: Produto = new Produto();
+    preco: Number
 
 }

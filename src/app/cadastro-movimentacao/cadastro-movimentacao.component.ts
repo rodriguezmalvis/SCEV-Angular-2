@@ -65,4 +65,9 @@ export class CadastroMovimentacaoComponent implements OnInit {
               }, erro =>  console.log(erro));
   }
 
+  checaPreco(){
+    (this.movimentacao.tipo === "Venda") 
+    ? this.formulario.controls["movimentacao"].get("preco").enable()
+    : this.formulario.controls["movimentacao"].get("preco").disable()
+    }
 }

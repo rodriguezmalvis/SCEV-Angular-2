@@ -27,6 +27,7 @@ export class FormGroupBuilder{
                 tipo: ['',Validators.required],
                 descricao: ['',Validators.required],
                 quantidade: ['',Validators.required],
+                preco: [{value:'', disabled: true},Validators.required],
                 estoque: this.builder.group({
                     idEstoque: ['',Validators.required]
                 }),
