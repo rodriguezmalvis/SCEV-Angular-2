@@ -10,5 +10,5 @@ export class Produto{
     preco: Number
     contato: String
     sinopse: String
-
+    urlFoto
 }

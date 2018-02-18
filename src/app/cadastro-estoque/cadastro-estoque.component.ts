@@ -3,6 +3,9 @@ import { Estoque } from './estoque';
 import { Http, Headers } from '@angular/http';
 import { FormService } from '../shared/services/formService';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
+import { FormGroup } from '@angular/forms';
+import { Builder } from 'protractor';
 
 @Component({
   selector: 'app-cadastro-estoque',
@@ -13,15 +16,19 @@ export class CadastroEstoqueComponent implements OnInit {
 
   estoque: Estoque = new Estoque();
   tipos: Object[]=[];
+  formulario: FormGroup
 
-  constructor(private formService: FormService, cookieService: CookieService) { 
+  constructor(private formService: FormService, 
+              cookieService: CookieService, 
+              private builder: FormGroupBuilder) { 
+
+    this.formulario = builder.getFormGroupEstoque();
 
     if(cookieService.get("idEstoque") !== undefined){
-      console.log("carregando estoque: "+ cookieService.get("idEstoque"))
       formService.getEstoque(cookieService.get("idEstoque"))
       .subscribe(
         estoque => (
-          this.estoque = estoque.estoque
+          this.formulario.setValue(estoque)
         ),
         erro => (
           console.log(erro)
@@ -30,7 +37,7 @@ export class CadastroEstoqueComponent implements OnInit {
       cookieService.remove("idEstoque");
     }
 
-    formService.getTiposEstoque()
+    this.formService.getTiposEstoque()
             .subscribe(
                 tipos =>
                 (
@@ -49,7 +56,7 @@ export class CadastroEstoqueComponent implements OnInit {
 
         this.formService.cadastraEstoque(this.estoque)
             .subscribe(() => {
-                this.estoque = new Estoque();
+                this.formulario = this.builder.getFormGroupEstoque()
                 console.log('Estoque salvo com sucesso');
             }, erro =>  console.log(erro));
   }

@@ -10,7 +10,7 @@ import { ListaEstoquesComponent } from './lista-estoques/lista-estoques.componen
 import { HttpModule } from '@angular/http';
 import { CadastroEstoqueComponent } from './cadastro-estoque/cadastro-estoque.component';
 import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListaProdutosComponent } from './lista-produtos/lista-produtos.component';
 import { ListaMovimentacoesComponent } from './lista-movimentacoes/lista-movimentacoes.component';
 import { CadastroMovimentacaoComponent } from './cadastro-movimentacao/cadastro-movimentacao.component';
@@ -18,6 +18,7 @@ import { FormService } from './shared/services/formService';
 import { CadastroTransferenciaComponent } from './cadastro-transferencia/cadastro-transferencia.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { ListaProdutosEstoqueComponent } from './lista-produtos-estoque/lista-produtos-estoque.component';
+import { FormGroupBuilder } from './shared/services/formGroupBuilder';
 
 
 @NgModule({
@@ -38,9 +39,10 @@ import { ListaProdutosEstoqueComponent } from './lista-produtos-estoque/lista-pr
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [FormService, CookieService],
+  providers: [FormService, CookieService, FormGroupBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
