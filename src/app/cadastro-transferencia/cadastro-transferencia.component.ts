@@ -3,6 +3,8 @@ import { FormService } from '../shared/services/formService';
 import { Estoque } from '../cadastro-estoque/estoque';
 import { Transferencia } from './transferencia';
 import { ProdutoEstoque } from '../cadastro-movimentacao/produto-estoque';
+import { FormGroup } from '@angular/forms';
+import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
 
 @Component({
   selector: 'app-cadastro-transferencia',
@@ -15,13 +17,27 @@ export class CadastroTransferenciaComponent implements OnInit {
   transferencia: Transferencia = new Transferencia();
   listaProdutos: ProdutoEstoque[] = [];
   destinos: Estoque[] = [];
+  formulario: FormGroup;
+  tipos;
 
-  constructor(private formService: FormService) {
+  constructor(private formService: FormService, private builder: FormGroupBuilder) {
+
+    this.formulario = builder.getFormGroupTranferencia();
 
     formService.getEstoques()
       .subscribe(
         estoques =>(
           this.listaEstoques = estoques
+        ),
+        erro => (
+          console.log(erro)
+        )
+      );
+
+      formService.getTiposTransferencia()
+      .subscribe(
+        tipos =>(
+          this.tipos = tipos.tipoMovimentacoes
         ),
         erro => (
           console.log(erro)
@@ -62,7 +78,7 @@ export class CadastroTransferenciaComponent implements OnInit {
 
     this.formService.cadastraTransferencia(this.transferencia)
     .subscribe(() => {
-      this.transferencia = new Transferencia();
+      this.formulario = this.builder.getFormGroupTranferencia(),
       console.log('Transferencia salva com sucesso');
     }, erro =>  console.log(erro));
 

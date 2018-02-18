@@ -1,5 +1,6 @@
 import { FormBuilder, Validators } from "@angular/forms";
 import { Injectable } from "@angular/core";
+import { DISABLED } from "@angular/forms/src/model";
 
 @Injectable()
 export class FormGroupBuilder{
@@ -9,7 +10,14 @@ export class FormGroupBuilder{
     }
 
     getFormGroupTranferencia(){
-        
+        return this.builder.group({
+            quantidade: ['',Validators.required],
+            tipo: ['',Validators.required],
+            origem: ['',Validators.required],
+            destino: ['',Validators.required],
+            produto: ['',Validators.required],
+            descricao: ['',Validators.required]
+        });
     }
 
     getFormGroupMovimentacao(){

@@ -43,6 +43,11 @@ export class FormService{
             .map(res => res.json());
     }
 
+    getTiposTransferencia(){
+        return this.http.get('http://localhost:8080/transferencia/tipos.json')
+            .map(res => res.json());
+    }
+
     getEstoques(){
         return this.http.get('http://localhost:8080/estoque/lista.json')
             .map(res => res.json());

@@ -19,7 +19,7 @@ export class CadastroMovimentacaoComponent implements OnInit {
   movimentacao: Movimentacao = new Movimentacao();
   formulario: FormGroup;
 
-  constructor(private formService: FormService, builder: FormGroupBuilder) { 
+  constructor(private formService: FormService, private builder: FormGroupBuilder) { 
 
     this.formulario = builder.getFormGroupMovimentacao();
 
@@ -60,7 +60,7 @@ export class CadastroMovimentacaoComponent implements OnInit {
 
           this.formService.cadastraMovimentacao(this.movimentacao)
               .subscribe(() => {
-                  this.movimentacao = new Movimentacao();
+                  this.formulario = this.builder.getFormGroupMovimentacao();
                   console.log('Movimentacao salva com sucesso');
               }, erro =>  console.log(erro));
   }

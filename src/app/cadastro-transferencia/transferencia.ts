@@ -4,7 +4,7 @@ import { Produto } from "../cadastro-produto/produto";
 export class Transferencia{
 
     quantidade: Number;
-    tipo: String = "Saida";
+    tipo: String;
     origem: Estoque = new Estoque();
     destino: Estoque = new Estoque();
     produto: Produto = new Produto();
