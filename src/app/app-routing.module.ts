@@ -10,6 +10,7 @@ import { CadastroTransferenciaComponent } from './cadastro-transferencia/cadastr
 import { ListaProdutosEstoqueComponent } from './lista-produtos-estoque/lista-produtos-estoque.component';
 
 const routes: Routes = [
+  { path: '', component: ListaEstoquesComponent },
   { path: 'listaEstoques', component: ListaEstoquesComponent },
   { path: 'cadastraEstoque', component: CadastroEstoqueComponent },
   { path: 'cadastraProduto', component: CadastroProdutoComponent },
