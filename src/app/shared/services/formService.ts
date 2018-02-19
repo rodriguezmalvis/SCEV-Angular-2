@@ -23,7 +23,8 @@ export class FormService{
         headers.append('Content-Type', 'application/json');
 
         return this.http.post(environment.serverUrl+'cadastraEstoque',
-        JSON.stringify(estoque), { headers: headers });
+        JSON.stringify(estoque), { headers: headers })
+        .map(res => res.json());
     }
 
     getTiposProduto(){

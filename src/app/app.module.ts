@@ -22,6 +22,8 @@ import { FormGroupBuilder } from './shared/services/formGroupBuilder';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MaskService } from './shared/services/maskService';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AlertComponent } from './alert/alert.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     ListaMovimentacoesComponent,
     CadastroMovimentacaoComponent,
     CadastroTransferenciaComponent,
-    ListaProdutosEstoqueComponent
+    ListaProdutosEstoqueComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    TextMaskModule
+    TextMaskModule,
+    NgbModule.forRoot()
   ],
   providers: [
     FormService, 

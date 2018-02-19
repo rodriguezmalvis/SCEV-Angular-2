@@ -16,7 +16,12 @@ export class CadastroEstoqueComponent implements OnInit {
 
   estoque: Estoque = new Estoque();
   tipos: Object[]=[];
-  formulario: FormGroup
+  formulario: FormGroup;
+  alerta = {
+    header: "",
+    tipo: "",
+    message: ""
+  }
 
   constructor(private formService: FormService, 
               cookieService: CookieService, 
@@ -53,8 +58,12 @@ export class CadastroEstoqueComponent implements OnInit {
 
   cadastra(){
         this.formService.cadastraEstoque(this.estoque)
-            .subscribe(() => {
-                this.formulario = this.builder.getFormGroupEstoque()
+            .subscribe(resposta => {
+                (resposta.tipo === "success") 
+                ? this.formulario = this.builder.getFormGroupEstoque() : false,
+                this.alerta.tipo = resposta.tipo,
+                this.alerta.message = resposta.messages
+                this.alerta.header = resposta.header
             }, erro =>  console.log(erro));
   }
 
