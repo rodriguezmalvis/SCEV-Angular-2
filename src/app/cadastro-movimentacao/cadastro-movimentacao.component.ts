@@ -61,12 +61,9 @@ export class CadastroMovimentacaoComponent implements OnInit {
   }
 
   cadastra(){
-    console.log(this.movimentacao);
-
           this.formService.cadastraMovimentacao(this.movimentacao)
               .subscribe(() => {
                   this.formulario = this.builder.getFormGroupMovimentacao();
-                  console.log('Movimentacao salva com sucesso');
               }, erro =>  console.log(erro));
   }
 

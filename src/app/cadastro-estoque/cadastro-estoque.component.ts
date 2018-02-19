@@ -52,12 +52,9 @@ export class CadastroEstoqueComponent implements OnInit {
   }
 
   cadastra(){
-    console.log(this.estoque);
-
         this.formService.cadastraEstoque(this.estoque)
             .subscribe(() => {
                 this.formulario = this.builder.getFormGroupEstoque()
-                console.log('Estoque salvo com sucesso');
             }, erro =>  console.log(erro));
   }
 

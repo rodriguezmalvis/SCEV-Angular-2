@@ -73,13 +73,9 @@ export class CadastroTransferenciaComponent implements OnInit {
   }
 
   cadastra(){
-    
-    console.log(this.transferencia);
-
     this.formService.cadastraTransferencia(this.transferencia)
     .subscribe(() => {
-      this.formulario = this.builder.getFormGroupTranferencia(),
-      console.log('Transferencia salva com sucesso');
+      this.formulario = this.builder.getFormGroupTranferencia()
     }, erro =>  console.log(erro));
 
   }

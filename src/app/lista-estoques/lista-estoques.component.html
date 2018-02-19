@@ -17,12 +17,12 @@
       <td>{{estoque.nome}}</td>
       <td>{{estoque.descricao}}</td>
       <td>{{estoque.quantidadeProdutos}}</td>
-      <td><a [routerLink]="['/listaProdutosEstoque']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Produtos</a></td>
-      <td><a [routerLink]="['/listaMovimentacoesEstoque']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Movimentações</a></td>
+      <td><a [routerLink]="['/listaProdutosEstoque/#']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Produtos</a></td>
+      <td><a [routerLink]="['/listaMovimentacoesEstoque/#']" (click)=salvaIdEstoque(estoque.idEstoque)>Ver Movimentações</a></td>
       <td>
         <div class="row">
       <div class="col text-right">
-        <a [routerLink]="['/editaEstoque']" (click)="salvaIdEstoque(estoque.idEstoque)" class="btn btn-sm btn-primary">Editar</a>
+        <a [routerLink]="['/editaEstoque/#']" (click)="salvaIdEstoque(estoque.idEstoque)" class="btn btn-sm btn-primary">Editar</a>
       </div>
     </div>
       </td>

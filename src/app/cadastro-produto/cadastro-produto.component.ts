@@ -58,12 +58,9 @@ export class CadastroProdutoComponent implements OnInit, AfterViewChecked {
     }
 
   cadastra(){
-      console.log(this.produto);
-
           this.formService.cadastraProduto(this.produto)
               .subscribe(() => {
                   this.formulario = this.builder.getFormGroupProduto()
-                  console.log('Produto salvo com sucesso');
               }, erro =>  console.log(erro));
     }
 }

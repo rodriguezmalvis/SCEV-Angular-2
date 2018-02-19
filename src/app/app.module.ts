@@ -21,6 +21,7 @@ import { ListaProdutosEstoqueComponent } from './lista-produtos-estoque/lista-pr
 import { FormGroupBuilder } from './shared/services/formGroupBuilder';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MaskService } from './shared/services/maskService';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,13 @@ import { MaskService } from './shared/services/maskService';
     ReactiveFormsModule,
     TextMaskModule
   ],
-  providers: [FormService, CookieService, FormGroupBuilder, MaskService],
+  providers: [
+    FormService, 
+    CookieService, 
+    FormGroupBuilder, 
+    MaskService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

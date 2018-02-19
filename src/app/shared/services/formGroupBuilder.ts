@@ -72,7 +72,6 @@ export class FormGroupBuilder{
     atualizaFormGroup(modelo,formulario){
         let nomes = Object.getOwnPropertyNames(modelo);
         nomes.forEach(nome => {
-            console.log(nome);   
             if(formulario.controls[nome.toString()] !== undefined){
                 formulario.controls[nome.toString()].setValue(nome.toString());
             }
