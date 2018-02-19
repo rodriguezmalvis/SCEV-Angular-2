@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from '../cadastro-produto/produto';
 import { Http } from '@angular/http';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -14,7 +15,7 @@ export class ListaProdutosComponent implements OnInit {
 
   constructor(private http: Http, private cookieService: CookieService) {
 
-    http.get('http://localhost:8080/produto/lista.json')
+    http.get(environment.serverUrl+'produto/lista.json')
             .map(res => res.json())
             .subscribe(
               produtos =>
