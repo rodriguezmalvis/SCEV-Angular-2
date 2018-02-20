@@ -6,6 +6,7 @@ import { Produto } from '../cadastro-produto/produto';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
 import { MaskService } from '../shared/services/maskService';
+import { Alerta } from '../alert/alerta';
 
 @Component({
   selector: 'app-cadastro-movimentacao',
@@ -19,6 +20,7 @@ export class CadastroMovimentacaoComponent implements OnInit {
   listaProdutos: Produto[] = [];
   movimentacao: Movimentacao = new Movimentacao();
   formulario: FormGroup;
+  alerta: Alerta = new Alerta();
   precoMask;
 
   constructor(private formService: FormService, 
@@ -62,8 +64,12 @@ export class CadastroMovimentacaoComponent implements OnInit {
 
   cadastra(){
           this.formService.cadastraMovimentacao(this.movimentacao)
-              .subscribe(() => {
-                  this.formulario = this.builder.getFormGroupMovimentacao();
+              .subscribe(resposta => {
+                (resposta.tipo === "success") ?
+                (this.movimentacao = new Movimentacao(),
+                this.formulario = this.builder.getFormGroupMovimentacao())
+                : false
+                this.alerta.novaAlerta(resposta.header,resposta.tipo,resposta.messages);
               }, erro =>  console.log(erro));
   }
 

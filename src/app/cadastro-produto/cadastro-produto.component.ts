@@ -6,6 +6,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { FormGroup } from '@angular/forms';
 import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
 import { MaskService } from '../shared/services/maskService';
+import { Alerta } from '../alert/alerta';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -17,6 +18,7 @@ export class CadastroProdutoComponent implements OnInit, AfterViewChecked {
   produto: Produto = new Produto();
   tipos: Object[] = [];
   formulario: FormGroup;
+  alerta: Alerta = new Alerta();
   precoMask
 
   constructor(private formService: FormService, 
@@ -59,8 +61,12 @@ export class CadastroProdutoComponent implements OnInit, AfterViewChecked {
 
   cadastra(){
           this.formService.cadastraProduto(this.produto)
-              .subscribe(() => {
-                  this.formulario = this.builder.getFormGroupProduto()
+              .subscribe(resposta => {
+                  (resposta.tipo === "success") ?
+                  (this.produto = new Produto(),
+                  this.formulario = this.builder.getFormGroupProduto())
+                  : false
+                  this.alerta.novaAlerta(resposta.header,resposta.tipo,resposta.messages);
               }, erro =>  console.log(erro));
     }
 }

@@ -37,7 +37,8 @@ export class FormService{
         headers.append('Content-Type', 'application/json');
   
         return this.http.post(environment.serverUrl+'cadastraProduto',
-        JSON.stringify(produto), { headers: headers });
+        JSON.stringify(produto), { headers: headers })
+        .map(res => res.json());
     }
 
     getTiposMovimentacoes(){
@@ -80,7 +81,8 @@ export class FormService{
         headers.append('Content-Type', 'application/json');
   
         return this.http.post(environment.serverUrl+'cadastraMovimentacao',
-        JSON.stringify(movimentacao), { headers: headers });
+        JSON.stringify(movimentacao), { headers: headers })
+        .map(res => res.json());
     }
 
     cadastraTransferencia(transferencia: Transferencia){
@@ -88,7 +90,8 @@ export class FormService{
         headers.append('Content-Type', 'application/json');
   
         return this.http.post(environment.serverUrl+'cadastraTransferencia',
-        JSON.stringify(transferencia), { headers: headers });
+        JSON.stringify(transferencia), { headers: headers })
+        .map(res => res.json());
     }
 
     getMovimentacoes(){

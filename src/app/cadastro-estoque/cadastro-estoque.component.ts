@@ -6,6 +6,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { FormGroupBuilder } from '../shared/services/formGroupBuilder';
 import { FormGroup } from '@angular/forms';
 import { Builder } from 'protractor';
+import { Alerta } from '../alert/alerta';
 
 @Component({
   selector: 'app-cadastro-estoque',
@@ -17,11 +18,7 @@ export class CadastroEstoqueComponent implements OnInit {
   estoque: Estoque = new Estoque();
   tipos: Object[]=[];
   formulario: FormGroup;
-  alerta = {
-    header: "",
-    tipo: "",
-    message: ""
-  }
+  alerta: Alerta = new Alerta();
 
   constructor(private formService: FormService, 
               cookieService: CookieService, 
@@ -60,10 +57,11 @@ export class CadastroEstoqueComponent implements OnInit {
         this.formService.cadastraEstoque(this.estoque)
             .subscribe(resposta => {
                 (resposta.tipo === "success") 
-                ? this.formulario = this.builder.getFormGroupEstoque() : false,
-                this.alerta.tipo = resposta.tipo,
-                this.alerta.message = resposta.messages
-                this.alerta.header = resposta.header
+                ? (
+                  this.formulario = this.builder.getFormGroupEstoque(),
+                  this.estoque = new Estoque()
+                ) : false
+                this.alerta.novaAlerta(resposta.header,resposta.tipo,resposta.messages);
             }, erro =>  console.log(erro));
   }
 
