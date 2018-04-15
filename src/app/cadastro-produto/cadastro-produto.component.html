@@ -59,7 +59,7 @@
     </div>
     <div class="form-group">
       <label for="descricao">Sinopse</label>
-      <textarea formControlName="sinopse" [(ngModel)]="produto.sinopse" class="form-control input-sm"
+      <textarea maxlength="500" formControlName="sinopse" [(ngModel)]="produto.sinopse" class="form-control input-sm"
       [ngClass]="{'is-invalid' : formulario.controls.produto.controls.sinopse.invalid}"></textarea>
     </div>
 
